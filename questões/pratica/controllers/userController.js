@@ -1,6 +1,6 @@
 // controllers/userController.js
 
-const userModel = require('../models/userService');
+const userModel = require('../models/userModel');
 
 const getAllUsers = async (req, res) => {
   try {
@@ -13,7 +13,7 @@ const getAllUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const user = await userModel.getUser(req.params.id);
+    const user = await userModel.getById(req.params.id);
     if (user) {
       res.status(200).json(user);
     } else {
@@ -27,7 +27,7 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const { name, email } = req.body;
-    const newUser = await userModel.createUser(name, email);
+    const newUser = await userModel.create(name, email);
     res.status(201).json(newUser);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -37,7 +37,7 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { name, email } = req.body;
-    const updatedUser = await userModel.updateUser(req.params.id, name, email);
+    const updatedUser = await userModel.update(req.params.id, name, email);
     if (updatedUser) {
       res.status(200).json(updated);
     } else {
@@ -50,7 +50,7 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    const deletedUser = await userModel.deleteUser(req.params.id);
+    const deletedUser = await userModel.delete(req.params.id);
     if (deletedUser) {
       res.status(200).json(deletedUser);
     } else {
