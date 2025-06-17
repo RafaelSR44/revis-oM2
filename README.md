@@ -345,3 +345,185 @@ Uma forma de abstrair o MVC é pensar que você está em um restaurante:
 - O **Model** é o **chef de cozinha** (quem prepara a informação);
 - E o **banco de dados** são os **ingredientes**.
 
+## 4. Front-end 
+
+### O que é Front-end?
+
+&emsp;Front‑end é a parte de um aplicativo ou site com a qual o usuário interage diretamente. Engloba tudo que é exibido no navegador — layout, estilos, comportamento e conteúdo dinâmico.
+
+### O que inclui na área de Front‑end  
+
+1. **HTML (HyperText Markup Language):**  
+   - Estrutura semântica dos documentos.  
+   - Marcação de títulos, parágrafos, listas, formulários etc.
+
+2. **CSS (Cascading Style Sheets):**  
+   - Estilização: cores, fontes, espaçamentos e posicionamentos.  
+   - Layouts responsivos (media queries, Flexbox, Grid).
+
+3. **JavaScript:**  
+   - Comportamento dinâmico e interatividade.  
+   - Manipulação do DOM, requisições HTTP, animações e lógica de negócios no cliente.
+
+## 5. DOM (Document Object Model)  
+
+### O que é DOM?
+
+O DOM funciona como uma API que traduz um documento HTML em uma representação hierárquica na memória. Ao carregar uma página, o navegador constrói esse modelo interno, permitindo que o JavaScript navegue pela sua estrutura e faça alterações dinamicamente.
+
+**Organização em árvore:**
+
+- O nó principal, chamado `document`, fica no topo da hierarquia.
+- Cada elemento HTML (por exemplo `<html>`, `<body>`, `<h1>`, `<p>`) é transformado em um *Element Node*.
+- O texto contido nesses elementos vira um *Text Node*.
+- Os valores associados às tags (como `class`, `id` ou outros atributos) passam a ser *Attribute Nodes*.
+
+![DOM](assets/DOM.png)
+
+
+### Selecionando elementos
+
+- **Elemento único:**
+  - `document.getElementById('elementId')`: pelo ID do elemento 
+  - `document.querySelector('cssSelector')`: pelo seletor CSS do elemento
+
+- **Múltiplos elementos:**
+  - `document.getElementsByTagName('tagName')`: retorna uma `HTMLCollection` ao vivo de todos os elementos com a tag 
+  - `document.getElementsByClassName('className')`: seleciona todos os elementos com a classe especificada 
+  - `document.querySelectorAll('cssSelector')`: retorna uma `NodeList` estática com todos os elementos que correspondem ao seletor CSS
+
+
+### Manipulando conteúdo
+
+- **Texto:**
+  - `textContent`: Seguro contra XSS, trata tudo como texto literal
+  - `innerHTML`: Poderoso mas perigoso se usado com entrada não confiável
+  - `outerHTML`: Inclui o próprio elemento na string de HTML
+
+- **Valor de inputs:**
+  - `value`: Usado para acessar ou alterar o valor de `<input>`, `<textarea>` ou `<select>`
+
+
+### Manipulando atributos
+
+- `element.getAttribute('atributo')`: Recupera o valor de um atributo específico.
+- `element.setAttribute('atributo', 'valor')`: Define ou atualiza o valor de um atributo.
+- `element.removeAttribute('atributo')`: Remove o atributo do elemento.
+- `element.hasAttribute('atributo')`: Verifica se o atributo existe.
+
+
+### Manipulando classes e estilos
+
+- **Classes:**
+  - `element.classList.add('classe')`
+  - `element.classList.remove('classe')`
+  - `element.classList.toggle('classe')`
+  - `element.classList.contains('classe')`
+
+- **Estilos:**
+  - `element.style.property`: Define ou obtém estilos inline (ex: `element.style.color = 'red'`)
+
+
+### Criando e inserindo elementos
+
+- `document.createElement('tag')`: Cria um novo elemento HTML.
+- `document.createTextNode('texto')`: Cria um nó de texto.
+- `parent.appendChild(child)`: Adiciona um nó filho ao final de um elemento pai.
+- `parent.insertBefore(novoElemento, elementoReferencia)`: Insere antes de outro elemento.
+- `element.append(...)`: Insere nós ou strings no final.
+- `element.prepend(...)`: Insere no início.
+
+
+### Removendo elementos
+
+- `element.remove()`: Remove o próprio elemento.
+- `parent.removeChild(child)`: Remove um filho específico.
+
+
+### Navegando pela árvore DOM
+
+- `element.parentNode`: Nó pai.
+- `element.children`: Coleção de elementos filhos.
+- `element.firstChild` / `element.lastChild`: Primeiro e último nó filho.
+- `element.firstElementChild` / `element.lastElementChild`: Primeiro e último *elemento* filho.
+- `element.nextSibling` / `element.previousSibling`: Nó irmão seguinte ou anterior.
+- `element.nextElementSibling` / `element.previousElementSibling`: *Elemento* irmão seguinte ou anterior.
+
+
+### Lidando com eventos
+
+- `element.addEventListener('evento', callback)`: Escuta um evento.
+- `element.removeEventListener('evento', callback)`: Remove o ouvinte.
+
+**Eventos comuns:**
+
+- `click`: Clique do mouse
+- `input`: Alterações em campos
+- `submit`: Envio de formulários
+- `mouseover` / `mouseout`: Interação com o mouse
+- `keydown` / `keyup`: Teclado pressionado/solto
+
+## 6. Redes de Computadores, HTTP e Arquitetura Cliente‑Servidor
+
+### Redes de Computadores
+
+- Estrutura composta por diversos dispositivos conectados por protocolos (ex: TCP/IP).
+- **Modelo OSI** com 7 camadas (Física, Enlace, Rede, Transporte, Sessão, Apresentação, Aplicação) para organizar funções da rede.
+- **Modelo TCP/IP** possui 4 camadas: Aplicação, Transporte, Internet, Acesso à Rede.
+- Cada dispositivo tem um endereço IP; comunicação ocorre via sockets TCP/UDP.
+- Redes podem ser classificadas como LAN, MAN, WAN, etc. (PAN, LAN, MAN, WAN).
+
+
+### Arquitetura Cliente‑Servidor
+
+- Estrutura distribuída:
+  - **Cliente** inicia requisições (ex: navegador, app móvel).
+  - **Servidor** atende requisições e devolve respostas.
+- **Fluxo básico**:
+  1. Cliente envia requisição via rede.
+  2. Servidor processa e busca dados (banco, arquivos).
+  3. Servidor envia resposta ao cliente.
+  4. Cliente exibe ou processa o resultado.
+- **Vantagens**:
+  - Centralização, escalabilidade, segurança, manutenção facilitada.
+- **Desafios**:
+  - Ponto único de falha, dependência de servidor, complexidade de configuração.
+- **Camadas**:
+  - **2 camadas**: cliente + servidor de dados.
+  - **3 camadas**: cliente, camada de negócio (aplicação), camada de dados.
+
+
+### Requisições e Respostas HTTP
+
+- **HTTP** é protocolo da camada de aplicação sobre TCP/IP; HTTPS usa TLS/SSL.
+- Funciona no paradigma requisição–resposta (stateless): cada requisição é independente.
+- **Componentes de uma requisição**:
+  - **Request line**: método + URI + versão (ex: `GET /index.html HTTP/1.1`)
+  - **Headers**: metadados (Host, Content-Type, Authorization, Cookies etc.).
+  - **Corpo (body)**: opção para métodos como POST/PUT.
+- **Principais métodos HTTP**:
+  - `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `TRACE`, `CONNECT`.
+- **Códigos de resposta**:
+  - 1xx (informação), 2xx (sucesso, ex: 200 OK), 3xx (redirecionamento), 4xx (erro do cliente, ex: 404), 5xx (erro do servidor, ex: 500).
+- **HTTPS**: HTTP sobre TLS/SSL, adicionando criptografia e autenticação via certificados digitais.
+
+
+### Componentes HTTP (headers mais usados)
+
+| Header               | Função |
+|----------------------|--------|
+| `Host`               | Define o domínio do servidor |
+| `Content-Type`, `Content-Length` | Tipo e tamanho do corpo da mensagem |
+| `Accept`             | Tipos de resposta aceitos pelo cliente |
+| `Cookie`, `Set-Cookie` | Envio e definição de cookies |
+| `Authorization`      | Autenticação do cliente |
+| `Cache-Control`      | Controle de cache |
+| `User-Agent`         | Identificação do cliente |
+
+### Resumo geral
+
+- **Redes de computadores**: comunicação organizada por camadas (OSI, TCP/IP), protocolos (IP, TCP/UDP).
+- **Cliente‑servidor**: modelo onde clientes solicitam recursos e servidores respondem, podendo ter arquiteturas de 2 ou 3 camadas.
+- **HTTP/HTTPS**: protocolo aplicado para web, funcional e seguro, com requisições independentes, métodos, headers e códigos de status.
+
+
