@@ -32,7 +32,7 @@ IV. O Sails.js é um framework MVC para Node.js, projetado para simplificar o de
 - D) II, III e IV.  
 - E) I, III e IV.
 
-2. Em um projeto de desenvolvimento de banco de dados PostgreSQL para uma aplicação de gerenciamento de vendas, a equipe de desenvolvimento precisa realizar consultas complexas que envolvem a junção de tabelas para obter informações detalhadas sobre vendas e clientes.
+3. Em um projeto de desenvolvimento de banco de dados PostgreSQL para uma aplicação de gerenciamento de vendas, a equipe de desenvolvimento precisa realizar consultas complexas que envolvem a junção de tabelas para obter informações detalhadas sobre vendas e clientes.
 
 Qual das seguintes opções descreve corretamente as características e usos de INNER JOIN, RIGHT JOIN e LEFT JOIN?
 
@@ -42,7 +42,7 @@ Qual das seguintes opções descreve corretamente as características e usos de 
 - D) INNER JOIN retorna apenas os registros com correspondência em ambas as tabelas; RIGHT JOIN retorna todos os registros da direita com correspondência; LEFT JOIN retorna todos os da esquerda com correspondência.  
 - E) INNER JOIN retorna todos os registros da esquerda; RIGHT JOIN retorna todos da direita com correspondência; LEFT JOIN retorna apenas os registros com correspondência.
 
-3. Você precisa criar um relatório que conecte alunos a seus professores orientadores. Essa relação está codificada em uma nova tabela `orientacoes`, que deverá incluir `id_aluno` e `id_professor`. Qual das seguintes opções melhor descreve o comando SQL para criar a tabela `orientacoes` de forma que ela estabeleça corretamente as chaves estrangeiras?
+4. Você precisa criar um relatório que conecte alunos a seus professores orientadores. Essa relação está codificada em uma nova tabela `orientacoes`, que deverá incluir `id_aluno` e `id_professor`. Qual das seguintes opções melhor descreve o comando SQL para criar a tabela `orientacoes` de forma que ela estabeleça corretamente as chaves estrangeiras?
 
 - A) `CREATE TABLE orientacoes (id_aluno INTEGER, id_professor INTEGER, FOREIGN KEY (id_aluno) REFERENCES alunos, FOREIGN KEY (id_professor) REFERENCES professores);`  
 - B) `CREATE TABLE orientacoes (id_aluno INTEGER PRIMARY KEY, id_professor INTEGER PRIMARY KEY, FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno), FOREIGN KEY (id_professor) REFERENCES professores(id_professor));`  
@@ -51,7 +51,7 @@ Qual das seguintes opções descreve corretamente as características e usos de 
 - E) `CREATE TABLE orientacoes (id_orientacao SERIAL PRIMARY KEY, id_aluno INTEGER, id_professor INTEGER, FOREIGN KEY (id_aluno) REFERENCES alunos(id_aluno), FOREIGN KEY (id_professor) REFERENCES professores(id_professor));`
 
 
-3. Avalie as seguintes asserções:
+5. Avalie as seguintes asserções:
 
 I - Um FULL JOIN retorna apenas os registros que possuem correspondência em ambas as tabelas envolvidas na junção.  
 **PORQUE**  
@@ -65,7 +65,7 @@ A respeito dessas asserções, assinale a alternativa correta:
 - D) A asserção I é uma proposição falsa e a II, verdadeira.  
 - E) As asserções I e II são proposições falsas.
 
-4. Durante a criação de um sistema de login para uma aplicação web, um estudante decidiu configurar o servidor para utilizar apenas o protocolo HTTP. Após testes, percebeu que os dados de login estavam sendo transmitidos de forma insegura, permitindo a interceptação por terceiros.
+6. Durante a criação de um sistema de login para uma aplicação web, um estudante decidiu configurar o servidor para utilizar apenas o protocolo HTTP. Após testes, percebeu que os dados de login estavam sendo transmitidos de forma insegura, permitindo a interceptação por terceiros.
 
 Considerando esse cenário, qual alternativa representa a melhor solução para proteger os dados trafegados entre cliente e servidor?
 
@@ -75,7 +75,7 @@ C) Utilizar o protocolo HTTPS, que incorpora segurança através de criptografia
 D) Trocar o navegador do usuário para um que possua firewall embutido.
 E) Usar apenas métodos HTTP como POST e DELETE, pois são mais seguros por padrão.
 
-5. Ao desenvolver um formulário de cadastro de usuários, uma equipe de programadores utilizou o método GET para enviar os dados do formulário ao servidor.
+7. Ao desenvolver um formulário de cadastro de usuários, uma equipe de programadores utilizou o método GET para enviar os dados do formulário ao servidor.
 
 Qual dos problemas abaixo pode ocorrer como consequência direta dessa escolha?
 
@@ -85,7 +85,7 @@ C) Os dados enviados pelo formulário poderão aparecer na URL, comprometendo a 
 D) O navegador impedirá que a requisição seja feita com esse método.
 E) A requisição falhará, pois GET não é aceito por servidores modernos.
 
-6. Considere o seguinte cenário:
+8. Considere o seguinte cenário:
 
 Um usuário acessa um site de e-commerce. Ele vê a lista de produtos disponíveis, filtra os produtos por categoria e faz login para realizar uma compra.
 
@@ -97,7 +97,7 @@ C) Servidor DNS
 D) Back-end
 E) WebSocket
 
-7. Durante a criação de uma rede social, a equipe de desenvolvimento optou por usar o MongoDB em vez do PostgreSQL. A justificativa foi a necessidade de maior flexibilidade nos tipos de dados armazenados, como listas, objetos e imagens embutidas em documentos.
+9. Durante a criação de uma rede social, a equipe de desenvolvimento optou por usar o MongoDB em vez do PostgreSQL. A justificativa foi a necessidade de maior flexibilidade nos tipos de dados armazenados, como listas, objetos e imagens embutidas em documentos.
 
 Com base nessa decisão, pode-se afirmar que:
 
@@ -107,7 +107,7 @@ C) PostgreSQL é a única opção viável para armazenar dados não estruturados
 D) A equipe escolheu um banco NoSQL, adequado para dados sem estrutura fixa.
 E) A decisão compromete a segurança, pois bancos NoSQL não possuem autenticação.
 
-8. Durante o desenvolvimento de um novo recurso em um projeto colaborativo, um desenvolvedor criou uma branch diretamente a partir da Main, realizou os commits e finalizou o desenvolvimento. Ao enviar o código para o repositório remoto, o time identificou que a Main foi modificada indevidamente.
+10. Durante o desenvolvimento de um novo recurso em um projeto colaborativo, um desenvolvedor criou uma branch diretamente a partir da Main, realizou os commits e finalizou o desenvolvimento. Ao enviar o código para o repositório remoto, o time identificou que a Main foi modificada indevidamente.
 
 De acordo com as boas práticas do Git Flow, o desenvolvedor deveria:
 
@@ -117,7 +117,7 @@ C) Ter criado a Feature a partir da Hotfix, pois ela é usada para tudo.
 D) Ter criado um Pull Request da Develop para a Feature.
 E) Ter realizado o trabalho todo na Main e, só depois, movido para a Develop.
 
-9. Um programador implementou a seguinte função:
+11. Um programador implementou a seguinte função:
 
 ```javascript
 function buscarUsuario(id) {
@@ -125,7 +125,15 @@ function buscarUsuario(id) {
 }
 ```
 
-10. Considere a tabela alunos(id, nome, curso). Um desenvolvedor deseja atualizar o nome do aluno com ID 10 para "Carlos Souza".
+Sabendo que essa função se comunica diretamente com o banco de dados e retorna informações para o controlador da aplicação, ela representa qual camada da arquitetura MVC?
+
+A) View
+B) Middleware
+C) Model
+D) Controller
+E) Front-End
+
+12. Considere a tabela alunos(id, nome, curso). Um desenvolvedor deseja atualizar o nome do aluno com ID 10 para "Carlos Souza".
 
 Qual comando SQL realiza corretamente essa operação?
 
@@ -135,7 +143,7 @@ C) `UPDATE alunos WHERE id = 10 SET nome = 'Carlos Souza';`
 D) `INSERT INTO alunos (nome) VALUES ('Carlos Souza') WHERE id = 10;`
 E) `DELETE nome FROM alunos WHERE id = 10 AND nome = 'Carlos Souza';`
 
-11. Considere as tabelas clientes e pedidos. O gerente de vendas quer visualizar todos os clientes, mesmo que alguns não tenham feito pedidos ainda.
+13. Considere as tabelas clientes e pedidos. O gerente de vendas quer visualizar todos os clientes, mesmo que alguns não tenham feito pedidos ainda.
 
 Qual tipo de JOIN deve ser utilizado para atender a essa demanda?
 
@@ -145,7 +153,7 @@ C) LEFT JOIN
 D) FULL JOIN
 E) CROSS JOIN
 
-12. Em um projeto web, um desenvolvedor precisa instalar a biblioteca express, que facilita a criação de APIs em Node.js.
+14. Em um projeto web, um desenvolvedor precisa instalar a biblioteca express, que facilita a criação de APIs em Node.js.
 
 Qual ferramenta ele deve utilizar para realizar essa instalação?
 
@@ -155,7 +163,7 @@ C) Supabase
 D) npm
 E) SQL
 
-13. Um time de desenvolvedores está criando um sistema de chat em tempo real. Eles precisam de um protocolo que mantenha a conexão aberta entre cliente e servidor para troca constante de mensagens sem recarregar a página.
+15. Um time de desenvolvedores está criando um sistema de chat em tempo real. Eles precisam de um protocolo que mantenha a conexão aberta entre cliente e servidor para troca constante de mensagens sem recarregar a página.
 
 Qual protocolo atende melhor a essa necessidade?
 
@@ -165,7 +173,7 @@ C) REST
 D) HTTPS
 E) WebSocket
 
-14. Uma equipe de desenvolvimento está implementando uma API RESTful para uma aplicação de gestão de livros. Durante o desenvolvimento, um dos integrantes propõe criar uma função no controller que faz uma consulta direta ao banco de dados com SQL puro, sem utilizar os models.
+16. Uma equipe de desenvolvimento está implementando uma API RESTful para uma aplicação de gestão de livros. Durante o desenvolvimento, um dos integrantes propõe criar uma função no controller que faz uma consulta direta ao banco de dados com SQL puro, sem utilizar os models.
 
 Diante disso, assinale a alternativa correta em relação às boas práticas da arquitetura MVC e RESTful:
 
@@ -175,7 +183,7 @@ C) O correto seria realizar a consulta diretamente nas rotas, uma vez que elas r
 D) O uso de SQL puro no controller melhora a performance e deve ser adotado sempre que possível.
 E) Controllers e models podem ser fundidos em um único arquivo para facilitar a manutenção do código.
 
-15. Considere a seguinte definição retirada do código de uma aplicação:
+17. Considere a seguinte definição retirada do código de uma aplicação:
 
 ```javascript
 router.get('/usuarios', userController.getAllUsers);
@@ -189,7 +197,7 @@ C) Um comando JavaScript usado para criar tabelas no banco de dados.
 D) Uma função do Model que processa o pedido do cliente e retorna os dados.
 E) Uma instrução de renderização direta no front-end via JavaScript.
 
-16. Um desenvolvedor júnior está confuso sobre onde implementar a lógica que busca todos os usuários cadastrados no banco de dados. Segundo a arquitetura MVC, em qual camada essa lógica deve ser implementada?
+18. Um desenvolvedor júnior está confuso sobre onde implementar a lógica que busca todos os usuários cadastrados no banco de dados. Segundo a arquitetura MVC, em qual camada essa lógica deve ser implementada?
 
 A) View, pois é responsável por mostrar os dados para o usuário.
 B) Controller, pois é responsável por buscar e retornar diretamente os dados do banco.
@@ -197,7 +205,7 @@ C) Model, pois é o componente responsável por toda manipulação de dados e l�
 D) Route, já que ela define qual informação será processada.
 E) Nenhuma das alternativas, pois a lógica deve ser implementada no servidor de hospedagem.
 
-17. Em uma aplicação utilizando arquitetura MVC e API RESTful, o papel do controller pode ser corretamente descrito como:
+19. Em uma aplicação utilizando arquitetura MVC e API RESTful, o papel do controller pode ser corretamente descrito como:
 
 A) Fornecer a interface gráfica para o usuário final.
 B) Atuar como intermediário entre as rotas e os models, processando as requisições e retornando respostas ao cliente.
@@ -205,7 +213,7 @@ C) Definir a estrutura das tabelas no banco de dados.
 D) Criar endpoints e gerenciar pacotes no Node.js via npm.
 E) Armazenar os dados da aplicação e realizar consultas diretas ao banco.
 
-18. Considere a analogia de um restaurante para explicar a arquitetura MVC:
+20. Considere a analogia de um restaurante para explicar a arquitetura MVC:
 
 - View → Restaurante (o que o cliente vê)
 
