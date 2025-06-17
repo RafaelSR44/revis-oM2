@@ -252,21 +252,96 @@ Retorna todos os clientes e todos os pedidos, com ou sem correspondência entre 
 
 ## 3. Back-End
 
-Todos os Back-End funcionam de foram API RESTful, que é uma interface para acessar e manipular recursos através da web usando os princípios do HTTP e da arquitetura REST. Ela fornece um conjunto de regras para criar APIs que sejam simples, organizadas e fáceis de entender.
+Todos os back-ends funcionam de forma **API RESTful**, que é uma interface para acessar e manipular recursos através da web, usando os princípios do HTTP e da arquitetura REST. Ela fornece um conjunto de regras para criar APIs simples, organizadas e fáceis de entender.
 
-Através de API's é possível:
+Por meio das APIs, é possível:
 
-- Realização de operações CRUD (Create, Read, Update, Delete) nos recursos. Cada operação é mapeada para um método HTTP específico.
-- navegar para outros recursos relacionados (Como outras páginas de um site).
+- Realizar operações CRUD (**Create**, **Read**, **Update**, **Delete**) nos recursos. Cada operação é mapeada para um método HTTP específico.
+- Navegar para outros recursos relacionados (como outras páginas de um site).
 
 Ou seja, API RESTful é a forma como a aplicação se comunica com o mundo externo.
 
-Como dito anteriormente, a arquitetura MVC é uma convenção utilizada em aplicações WEB, organizando os códigos. Ela é muito utilizada porque é muito util, em questões de manutenção, em metodologias API RESTful, já que Juntos, eles ajudam a manter o projeto limpo, escalável e fácil de manter.
+Como dito anteriormente, a arquitetura **MVC** é uma convenção muito utilizada em aplicações web para organizar o código. Ela é bastante popular por facilitar a manutenção, especialmente em metodologias API RESTful, já que, juntos, ajudam a manter o projeto limpo, escalável e fácil de manter.
 
 ### Models
 
-O model é o responsável por Dados e lógica de negócio. Ou seja, dentro dele é necessário um CRUD para fazer toda a manipulação do banco de dados. Por convenção, é importante que exista um model para cada tabela do banco de dados e TODA e qualquer manipulação seja feita por eles, e não por controllers ou services.
+O **Model** é o responsável pelos **dados e pela lógica de negócio**. Ou seja, dentro dele, é necessário implementar um CRUD para manipular o banco de dados.
 
-Exemplo do código de um model:
+Por convenção, é importante que exista **um model para cada tabela** do banco de dados, e **toda e qualquer manipulação de dados seja feita pelos models**, e **não diretamente pelos controllers ou services**.
+
+Exemplo de código de um Model:
 
 ```javascript
+class User {
+  static async getAll() {
+    const result = await db.query('SELECT * FROM users');
+    return result.rows;
+  }
+}
+```
+
+Repare que o Model utiliza SQL em seu corpo para fazer as **queries**!
+
+### Controllers
+
+Os **Controllers** atuam como intermediários entre as rotas e os models. Eles recebem as **requisições HTTP**, processam os dados (geralmente chamando serviços ou models) e retornam uma resposta ao cliente.
+
+O controller **não deve fazer nenhuma requisição direta ao banco de dados**, já que isso é papel do Model.
+
+Exemplo de código de um Controller:
+
+```javascript
+const userModel = require('../models/userModel');
+
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await userModel.getAll();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+```
+
+Repare nos **status** enviados: todos são **HTTP Status Codes**, explicados no primeiro capítulo!
+
+### Views
+
+As **Views** representam a **interface visual** da aplicação, ou seja, **o que o usuário vê e interage**.
+
+Exemplos de Views:
+
+- Arquivos HTML
+- Templates EJS
+- Páginas renderizadas com frameworks frontend
+
+No caso de uma API pura, pode-se dizer que **o cliente (front-end) é a view**, e os dados trafegam em formato JSON, por exemplo.
+
+### Routes
+
+Para realizar a comunicação entre a **view** e o **controller**, são utilizadas as **rotas**, que são caminhos que o usuário pode acessar para disparar funções específicas.
+
+As rotas também são responsáveis por determinar **qual tela aparecerá em cada caminho**, renderizando a view de acordo com a rota.
+
+É importante também mencionar que o termo **endpoint** surge das rotas. O **endpoint** é onde **acaba o caminho do MVC**, ou seja:
+
+1. Existe um protocolo HTTP (GET, POST, etc.);
+2. Existe uma função no controller para aquela rota;
+3. Existe uma função no model que o controller irá chamar.
+
+Exemplo de código de uma rota:
+
+```javascript
+router.get('/', userController.getAllUsers); // Eu sou o endpoint XD
+```
+
+Repare que ela faz uma **requisição HTTP**!
+
+Uma forma de abstrair o MVC é pensar que você está em um restaurante:
+
+- A **View** é o **restaurante** (o que o cliente vê);
+- As **Rotas** são o **cardápio** (as opções que você pode pedir);
+- O **Controller** é o **garçom** (que leva o pedido para a cozinha);
+- O **Model** é o **chef de cozinha** (quem prepara a informação);
+- E o **banco de dados** são os **ingredientes**.
+
