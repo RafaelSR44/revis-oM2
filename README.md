@@ -185,10 +185,10 @@ Um JOIN é um meio de combinar colunas de uma (auto-junção) ou mais tabelas, u
 
 Existem quatro tipos principais de JOIN:
 
-- INNER JOIN: Explicar
-- LEFT JOIN: Explicar
-- RIGHT JOIN: Explicar
-- FULL JOIN: Explicar
+- INNER JOIN: Traz apenas os registros que existem nas duas tabelas.
+- LEFT JOIN: Traz todos os registros da tabela da esquerda, mesmo que não haja correspondência na da direita.
+- RIGHT JOIN: Traz todos os registros da tabela da direita, mesmo que não haja correspondência na da esquerda.
+- FULL JOIN: Traz todos os registros das duas tabelas, combinando os que têm correspondência, e mostrando nulos onde não houver.
 
 ![SQL JOINS](assets/sqljoins.png)
 
